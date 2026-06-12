@@ -1,0 +1,19 @@
+# Line endings: CRLF on checkout (Windows / CF Server)
+* text=auto eol=crlf
+
+# ColdFusion — force text mode for proper diff/merge
+# 編碼混合 Big5 與 UTF-8，git 照原始 bytes 存放不做轉碼
+*.cfm text eol=crlf
+*.cfc text eol=crlf
+
+# Binary assets
+*.jpg binary
+*.png binary
+*.gif binary
+*.ico binary
+*.bmp binary
+*.pdf binary
+*.xlsx binary
+*.xls binary
+*.doc binary
+*.docx binary

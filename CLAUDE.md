@@ -130,12 +130,13 @@ INV*   品號 / 庫存（Inventory）— INVMB 品號主檔
 
 ## 編碼地雷（容易踩）
 
-**檔案編碼不統一**：
+**檔案編碼不統一，且無簡單的目錄規則**：
 
-- **根目錄檔案是 Big5**：`menu.cfm`、`header.cfm`、`footer.cfm`、`UserLoginForm.cfm`、`ForceUserLogin.cfm`、`permission.cfm`、`change.cfm` 等
-- **模組目錄底下的檔案是 UTF-8**：BIM/COP/PUR/INV/* 下的 `.cfm`
+- **根目錄檔案全部是 Big5**：`menu.cfm`、`header.cfm`、`footer.cfm`、`UserLoginForm.cfm`、`ForceUserLogin.cfm`、`permission.cfm`、`change.cfm` 等
+- **模組目錄是 Big5 / UTF-8 混合**：同一個資料夾裡可能並存兩種編碼（例如 `_SQL.cfm` 常為 Big5，主頁面 `.cfm` 可能是 UTF-8）。不能單靠資料夾判斷
+- **判斷方式**：改檔前用編輯器確認編碼，或用 PowerShell 檢查 UTF-8 BOM / strict decode
 
-編輯時務必保留原檔編碼，否則中文全變亂碼。用 `Edit` 工具一般安全（只動 diff），但用 `Write` 整檔覆寫前一定要先確認編碼。新建檔案跟隨**所在資料夾**的習慣：放模組底下→ UTF-8。
+編輯時務必保留原檔編碼，否則中文全變亂碼。用 `Edit` 工具一般安全（只動 diff），但用 `Write` 整檔覆寫前一定要先確認編碼。新建檔案一律用 **UTF-8**（往 UTF-8 收斂）。
 
 ## 安全現況（必須先講清楚）
 
