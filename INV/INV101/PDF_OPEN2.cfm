@@ -1,0 +1,2 @@
+
+<CFCONTENT TYPE="application/pdf" FILE="\\192.168.0.9\AGP\CF_files\BOMMF\#URL.MF001#_#URL.MF004#.pdf" DELETEFILE="No" >

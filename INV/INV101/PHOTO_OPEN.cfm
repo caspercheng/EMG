@@ -1,0 +1,2 @@
+
+<CFCONTENT TYPE="image/x-png" FILE="\\192.168.0.9\AGP\CF_files\INVMB_PHOTO\#URL.MB001#.jpg" DELETEFILE="No" >

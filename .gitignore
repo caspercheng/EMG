@@ -1,0 +1,33 @@
+# === 備份 / 廢棄目錄（CLAUDE.md 列出的，不納入版控） ===
+COP/COP201_20240717BACKUP/
+COP/COP201_20260525/
+COP/COP202_20240923/
+COP/COP202_20241014/
+COP/COP201/新增資料夾/
+COP/COP202/備份/
+COP/COP202/新增資料夾/
+COP/COP202/沒用到/
+COP/COP304/BACKUP/
+COP/COP304/新增資料夾/
+
+# 通用備份樣式
+*_BACKUP/
+*_BACKUP.*
+
+# 棄置實驗
+menu_test.cfm
+
+# === 上傳檔案（走 UNC，不進 repo） ===
+CF_files/
+
+# === 系統 / 編輯器 ===
+Thumbs.db
+Desktop.ini
+*.tmp
+*.bak
+*.swp
+*~
+.DS_Store
+
+# === Claude Code ===
+.claude/

@@ -1,0 +1,42 @@
+<!---確認資料是否為主件---> 
+
+<cfoutput>
+
+<cfquery name="BOMMD" datasource="#SESSION.COMPANY#">
+	 SELECT MD001,SUM(MB2.MB803*MD006/MD007) SUM803,SUM(MB2.MB806*MD006/MD007) SUM806
+	  FROM BOMMD 
+	  JOIN INVMB ON MD001=MB001
+	  JOIN INVMB MB2 ON MB2.MB001=MD003
+	  WHERE 1=1 
+		AND INVMB.MB026='#MB026#'
+		AND INVMB.MB001='#MB001#'
+		AND ((MD012='' OR MD012> '#MID(FORM.KG003,1,4)#'+'#MID(FORM.KG003,6,2)#'+'#MID(FORM.KG003,9,2)#')	  
+		AND (MD011='' OR MD011< '#MID(FORM.KG003,1,4)#'+'#MID(FORM.KG003,6,2)#'+'#MID(FORM.KG003,9,2)#'))
+		GROUP BY MD001	
+</cfquery>
+
+<cfif #BOMMD.recordcount# gt 0>
+	<cfloop query="BOMMD">
+	<cfset SUM803A=#SUM803# >
+	<cfset SUM806A=#SUM806# >
+		<cfquery name="MB803_UPDATE" datasource="#SESSION.COMPANY#">
+		UPDATE INVMB 
+		SET MB803 = ROUND((MB801+MB802+ #SUM803A#),2),
+				MB806 = ROUND((MB804+MB805+ #SUM806A#),2)
+		FROM INVMB 
+		WHERE 1=1
+			AND MB001='#MD001#'
+		</cfquery>
+	</cfloop>
+<cfelse>
+		<cfquery name="MB803_UPDATE" datasource="#SESSION.COMPANY#">
+		UPDATE INVMB 
+		SET MB803 = ROUND((MB801+MB802),2),
+				MB806 = ROUND((MB804+MB805),2)
+		FROM INVMB 
+		WHERE 1=1
+			AND MB001='#MB001#'
+		</cfquery>
+</cfif>
+
+</cfoutput>
